@@ -1,5 +1,5 @@
 """
-Nubbin battery class.
+Spindler battery class.
 """
 
 
@@ -7,7 +7,7 @@ from datetime import datetime
 from battery.battery import Battery
 
 
-class NubbinBattery(Battery):
+class SpindlerBattery(Battery):
     """
     Implement Battery interface.
     """
@@ -15,7 +15,7 @@ class NubbinBattery(Battery):
                  current_date: datetime,
                  last_service_date: datetime) -> None:
         """
-        Initialize an instance of NubbinBattery.
+        Initialize an instance of SpindlerBattery.
 
         Args:
             current_date (datetime): Current date.
@@ -45,7 +45,7 @@ class NubbinBattery(Battery):
 
     def needs_service(self) -> bool:
         """
-        Check if battery needs service. Nubbin battery needs service
+        Check if battery needs service. Spindler battery needs service
         every 2 years.
 
         Returns:
@@ -53,5 +53,5 @@ class NubbinBattery(Battery):
         """
         last_service_date = self.get_last_service_date()
         service_threshold_date = last_service_date.replace(
-            year=last_service_date.year + 4)
-        return service_threshold_date < datetime.today().date()
+            year=last_service_date.year + 2)
+        return service_threshold_date < self.get_current_date()
