@@ -53,5 +53,5 @@ class SpindlerBattery(Battery):
         """
         last_service_date = self.get_last_service_date()
         service_threshold_date = last_service_date.replace(
-            year=last_service_date.year + 2)
+            year=last_service_date.year + 3)
         return service_threshold_date < self.get_current_date()
